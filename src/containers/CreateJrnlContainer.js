@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   touchable: {
     display: 'flex',
-    flex: 1,
+    //flex: 1,
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
