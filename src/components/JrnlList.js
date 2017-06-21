@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 
 
 
-export function JrnlItemCount({count}){
+export function JrnlListCount({count}){
   return (
     <View style={styles.view}>
       <Text style={styles.text}>{count}</Text>
@@ -44,18 +44,18 @@ export function JrnlItemCount({count}){
   )
 }
 
-function JrnlItemText({text}){
+function JrnlListText({text}){
   return (
     <Text style={styles.text}>{text}</Text>
   )
 }
 
 
-export function JrnlItem({count,text}){
+export function JrnlListItem({count,text}){
   return (
     <View style={styles.item}>
-      <JrnlItemText text={text}/>
-      <JrnlItemCount count={count}/>
+      <JrnlListText text={text}/>
+      <JrnlListCount count={count}/>
     </View>
   )
 }
@@ -63,8 +63,11 @@ export function JrnlItem({count,text}){
 export default function JrnlList({data}){
   return (
     <View style={styles.list} >
-      <FlatList data={data}
-              renderItem={ ({item}) => <JrnlItem text={item.text} count={item.count} /> } />
+      <FlatList
+        data={data}
+        keyExtractor={ item => item.id }
+        renderItem={ ({item}) => <JrnlListItem text={item.text} count={item.count}/>
+      } />
     </View>
 
   )
