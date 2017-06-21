@@ -62,7 +62,7 @@ export function JrnlItem({count,text}){
 
 export default function JrnlList({data}){
   return (
-    <View>
+    <View style={styles.list} >
       <FlatList data={data}
               renderItem={ ({item}) => <JrnlItem text={item.text} count={item.count} /> } />
     </View>
