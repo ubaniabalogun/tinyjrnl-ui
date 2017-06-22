@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View,Text, StyleSheet, FlatList } from 'react-native'
+import { View,Text, StyleSheet, FlatList, TouchableHighlight, Alert } from 'react-native'
 
 
 const styles = StyleSheet.create({
@@ -51,24 +51,43 @@ function JrnlListText({text}){
 }
 
 
-export function JrnlListItem({count,text}){
+function JrnlListItem({item}){
+  let {text, count } = item
+  let _onPress = () => {
+    Alert.alert('Hello',`From: ${text}`)
+  }
   return (
-    <View style={styles.item}>
-      <JrnlListText text={text}/>
-      <JrnlListCount count={count}/>
-    </View>
+    <TouchableHighlight onPress={_onPress} >
+      <View style={styles.item}>
+        <JrnlListText text={text}/>
+        <JrnlListCount count={count}/>
+      </View>
+    </TouchableHighlight>
+
   )
 }
 
-export default function JrnlList({data}){
-  return (
-    <View style={styles.list} >
-      <FlatList
-        data={data}
-        keyExtractor={ item => item.id }
-        renderItem={ ({item}) => <JrnlListItem text={item.text} count={item.count}/>
-      } />
-    </View>
+export default class JrnlList extends Component {
 
-  )
+  _renderItem({item, index}){
+    return (
+      <JrnlListItem item={item}/>
+    )
+  }
+
+  render(){
+    let { data } = this.props
+    return (
+      <View style={styles.list} >
+        <FlatList
+          data={data}
+          keyExtractor={ item => item.id }
+          renderItem={this._renderItem} />
+      </View>
+
+    )
+  }
+
+
+
 }

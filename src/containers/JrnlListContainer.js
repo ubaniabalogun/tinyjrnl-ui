@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import JrnlList from '../components/JrnlList'
+import { Alert } from 'react-native'
 
 export default class JrnlListContainer extends Component {
 
-  _onPressItem(){
-
-  }
-
+  
   constructor(){
     super()
     this.state = {
@@ -32,7 +30,7 @@ export default class JrnlListContainer extends Component {
 
   render(){
     return (
-      <JrnlList data={this.state.data}/>
+      <JrnlList data={this.state.data} onPressItem={this._onPressItem}/>
     )
   }
 
