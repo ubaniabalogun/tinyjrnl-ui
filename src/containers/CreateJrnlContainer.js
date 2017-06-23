@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { TouchableHighlight, Alert, StyleSheet, Text, View, FlatList } from 'react-native'
+import { TouchableHighlight,
+          Alert, StyleSheet,
+          Text, View, FlatList,
+          NavigationActions } from 'react-native'
+
 
 const styles = StyleSheet.create({
   text: {
@@ -29,13 +33,10 @@ function CreateJrnlButton(){
 
 export default class CreateJrnlContainer extends Component {
 
-  handlePress(){
-    Alert.alert('Create New Jrnl','This will create a new jrnl entry')
-  }
-
   render(){
+
     return (
-      <TouchableHighlight onPress={this.handlePress} style={styles.touchable}>
+      <TouchableHighlight onPress={() => this.props.navigator('CreateJrnl')} style={styles.touchable}>
         <View>
           <CreateJrnlButton/>
         </View>

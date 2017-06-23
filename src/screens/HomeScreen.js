@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text, FlatList } from 'react-native'
-import CreateJrnlContainer from './CreateJrnlContainer'
-import JrnlListContainer from './JrnlListContainer'
+import { View, StyleSheet, Text, FlatList, NavigationActions } from 'react-native'
+import CreateJrnlContainer from '../containers/CreateJrnlContainer'
+import JrnlListContainer from '../containers/JrnlListContainer'
 
 const styles = StyleSheet.create({
   container: {
@@ -11,15 +11,18 @@ const styles = StyleSheet.create({
   }
 })
 
+
 export default class HomeScreen extends Component {
   static navigationOptions = {
     title: 'My Jrnls'
   }
 
+
   render(){
+    const { navigate } = this.props.navigation
     return (
       <View style={styles.container}>
-        <CreateJrnlContainer/>
+        <CreateJrnlContainer navigator={navigate}/>
         <JrnlListContainer/>
       </View>
     )
