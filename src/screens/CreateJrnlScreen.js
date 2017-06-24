@@ -24,7 +24,7 @@ export default class CreateJrnlScreen extends Component {
         <Label name="Name"/>
         <JrnlTextInput/>
         <Label name="Tags"/>
-        <TextInput/>
+        <JrnlTextInput/>
         <Label name="Default Increment" />
         <JrnlTextInput/>
       </View>
