@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 const navigationOptions = {
   headerTitleStyle: {
     alignSelf: 'center',
-    // fontSize: 20
+    fontSize: 20
   }
 }
 
