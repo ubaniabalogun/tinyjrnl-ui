@@ -24,15 +24,18 @@ const styles = StyleSheet.create({
   item: {
     display: 'flex',
     flexDirection: 'row',
-    'alignItems': 'center',
+    alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 10,
+    paddingBottom: 10,
+    paddingTop: 10,
     borderStyle: 'solid',
-    'borderColor': 'black',
-    'borderWidth': 1
+    borderColor: 'black',
+    borderBottomWidth: 1
   },
   list: {
-    flex: 1
+    flex: 1,
+    paddingLeft: 10,
+    paddingRight: 10
   }
 })
 

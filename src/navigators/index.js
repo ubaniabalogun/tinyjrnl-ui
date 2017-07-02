@@ -6,15 +6,29 @@ import NewEntryScreen from '../screens/NewEntryScreen'
 import { StackNavigator, addNavigationHelpers } from 'react-navigation'
 import { connect } from 'react-redux'
 
-export const AppNavigator = StackNavigator(
-  {
-    Home: { screen: HomeScreen },
-    NewJrnl: { screen: NewJrnlScreen }
-  },
-  {
-    mode: 'modal'
+
+const navigationOptions = {
+  headerTitleStyle: {
+    alignSelf: 'center',
+    // fontSize: 20
   }
-)
+}
+
+const stackConfig = {
+  Home: {
+    screen: HomeScreen
+  },
+  NewJrnl: {
+    screen: NewJrnlScreen
+  }
+}
+
+const routeConfig = {
+  mode: 'modal',
+  navigationOptions
+}
+
+export const AppNavigator = StackNavigator(stackConfig, routeConfig)
 
 function AppWithNavigationState({dispatch, nav}){
   return <AppNavigator navigation={addNavigationHelpers({dispatch, state: nav})}/>
