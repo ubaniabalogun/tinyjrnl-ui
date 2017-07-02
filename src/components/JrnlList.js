@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View,Text, StyleSheet, FlatList, TouchableHighlight, Alert } from 'react-native'
+import { View,Text, StyleSheet, FlatList, TouchableHighlight, TouchableNativeFeedback, Alert } from 'react-native'
 import { connect } from 'react-redux'
+import { startEntry } from '../actions/entryActions'
 
 
 const styles = StyleSheet.create({
@@ -51,13 +52,10 @@ function JrnlListText({text}){
 }
 
 
-function JrnlListItem({item}){
+function JrnlListItem({item, onPress}){
   let {text, count } = item
-  let _onPress = () => {
-    Alert.alert('Hello',`From: ${text}`)
-  }
   return (
-    <TouchableHighlight onPress={_onPress} >
+    <TouchableHighlight onPress={onPress} >
       <View style={styles.item}>
         <JrnlListText text={text}/>
         <JrnlListCount count={count}/>
@@ -68,19 +66,20 @@ function JrnlListItem({item}){
 }
 
 
-function JrnlList({data}){
+function JrnlList({data, onPressItem }){
   return (
     <View style={styles.list}>
       <FlatList
         data={data}
         keyExtractor={ item => item.id }
-        renderItem={ ({item, index}) => <JrnlListItem item={item}/>}/>
+        renderItem={ ({item, index}) => <JrnlListItem item={item} onPress={onPressItem}/>}/>
     </View>
   )
 }
 
 JrnlList.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
+  onPressItem: PropTypes.func.isRequired
 }
 
 
@@ -88,5 +87,9 @@ const mapStateToProps = state => ({
   data: state.jrnls
 })
 
+const mapDispatchToProps = dispatch => ({
+  onPressItem: () => dispatch(startEntry())
+})
 
-export default connect(mapStateToProps)(JrnlList)
+
+export default connect(mapStateToProps,mapDispatchToProps)(JrnlList)

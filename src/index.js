@@ -8,6 +8,7 @@ class TinyJrnlUI extends Component{
   store = createStore(AppReducer)
 
   render(){
+    console.log(this.store.getState())
     let unsubscribe = this.store.subscribe(() => {
       console.log(this.store.getState())
     })
