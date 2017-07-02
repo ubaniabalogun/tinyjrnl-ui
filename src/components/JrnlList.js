@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { View,Text, StyleSheet, FlatList, TouchableHighlight, Alert } from 'react-native'
+import { connect } from 'react-redux'
 
 
 const styles = StyleSheet.create({
@@ -34,8 +36,6 @@ const styles = StyleSheet.create({
 })
 
 
-
-
 export function JrnlListCount({count}){
   return (
     <View style={styles.view}>
@@ -67,27 +67,26 @@ function JrnlListItem({item}){
   )
 }
 
-export default class JrnlList extends Component {
 
-  _renderItem({item, index}){
-    return (
-      <JrnlListItem item={item}/>
-    )
-  }
-
-  render(){
-    let { data } = this.props
-    return (
-      <View style={styles.list} >
-        <FlatList
-          data={data}
-          keyExtractor={ item => item.id }
-          renderItem={this._renderItem} />
-      </View>
-
-    )
-  }
-
-
-
+function JrnlList({data}){
+  return (
+    <View style={styles.list}>
+      <FlatList
+        data={data}
+        keyExtractor={ item => item.id }
+        renderItem={ ({item, index}) => <JrnlListItem item={item}/>}/>
+    </View>
+  )
 }
+
+JrnlList.propTypes = {
+  data: PropTypes.array.isRequired
+}
+
+
+const mapStateToProps = state => ({
+  data: state.jrnls
+})
+
+
+export default connect(mapStateToProps)(JrnlList)

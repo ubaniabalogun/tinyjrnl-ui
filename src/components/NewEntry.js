@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 
 export default function NewEntry({title,increment}){
   return (
-    <Modal animationType="slide" transparent={true} visible={true}>
+    <Modal animationType="slide" transparent={false} visible={true}>
       <Text>{title}</Text>
       <TextInput>{increment}</TextInput>
     </Modal>

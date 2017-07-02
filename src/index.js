@@ -1,17 +1,22 @@
 import React, { Component } from 'react'
-import HomeScreen from './screens/HomeScreen'
-import NewJrnlScreen from './screens/NewJrnlScreen'
-import NewEntryScreen from './screens/NewEntryScreen'
-import { StackNavigator } from 'react-navigation'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import AppReducer from './reducers'
+import AppWithNavigationState from './navigators'
 
+class TinyJrnlUI extends Component{
+  store = createStore(AppReducer)
 
+  render(){
+    let unsubscribe = this.store.subscribe(() => {
+      console.log(this.store.getState())
+    })
+    return (
+      <Provider store={this.store}>
+        <AppWithNavigationState/>
+      </Provider>
+    )
+  }
+}
 
-const App = StackNavigator({
-  Home: { screen: HomeScreen },
-  CreateJrnl: { screen: NewJrnlScreen }
-  },
-  {
-  mode: 'modal'
-})
-
-export default App
+export default TinyJrnlUI
