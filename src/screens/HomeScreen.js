@@ -8,14 +8,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: 'white'
+  },
+  header: {
+    flex: 1,
+    justifyContent: 'center'
   }
 })
 
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
-    title: 'My Jrnls'
+    title: 'My Jrnls',
+
   }
 
   render(){

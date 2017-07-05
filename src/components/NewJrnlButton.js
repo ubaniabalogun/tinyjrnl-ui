@@ -17,15 +17,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderStyle: 'solid',
-    borderWidth: 1,
-    height: 50
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
+    height: 65
   }
 })
 
 function NewJrnlButton({createJrnl}){
   return (
-    <TouchableHighlight onPress={createJrnl} style={styles.touchable}>
-      <View>
+    <TouchableHighlight onPress={createJrnl}>
+      <View style={styles.touchable}>
         <Text style={styles.text}>
           Create New Jrnl
         </Text>

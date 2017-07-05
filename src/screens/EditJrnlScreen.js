@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { Button, Keyboard } from 'react-native'
-import NewJrnl from '../components/NewJrnl'
+import { Button, Keyboard, View, Text } from 'react-native'
+import EditJrnl from '../components/EditJrnl'
 
-
-
-export default class NewJrnlScreen extends Component {
+export default class EditJrnlScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
     const { goBack } = navigation
@@ -14,16 +12,16 @@ export default class NewJrnlScreen extends Component {
       goBack()
     }
 
-
     return {
-      title: 'Create New Jrnl',
+      title: 'Edit Jrnl',
       headerRight: <Button title="Save" onPress={handlePress}/>
     }
   }
 
   render(){
     return (
-      <NewJrnl/>
+      <EditJrnl/>
     )
   }
+
 }
