@@ -60,7 +60,7 @@ function NewEntry({title,increment, isVisible, onCancel}){
           <Text style={styles.text}>Bottles of Water</Text>
           <Button title="Save" onPress={onCancel}/>
         </View>
-        <TextInput style={styles.input} autoFocus>{increment}</TextInput>
+        <TextInput style={styles.input}>{increment}</TextInput>
         <TextInput style={styles.input} >{increment}</TextInput>
 
 

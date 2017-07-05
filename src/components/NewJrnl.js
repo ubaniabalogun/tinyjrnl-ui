@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 20,
     justifyContent: 'flex-start',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: 'white'
   },
   input: {
     fontSize: 20,
