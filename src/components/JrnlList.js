@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View,Text, StyleSheet, FlatList, TouchableHighlight, TouchableNativeFeedback, Alert } from 'react-native'
+import { View, Text, StyleSheet, FlatList, TouchableHighlight,
+         Alert } from 'react-native'
+import { NavigationActions } from 'react-navigation'
 import { connect } from 'react-redux'
 import { startEntry } from '../actions/entryActions'
 
@@ -55,10 +57,10 @@ function JrnlListText({text}){
 }
 
 
-function JrnlListItem({item, onPress}){
+function JrnlListItem({item, onPress, onLongPress}){
   let {text, count } = item
   return (
-    <TouchableHighlight onPress={onPress} >
+    <TouchableHighlight onPress={onPress} onLongPress={onLongPress} >
       <View style={styles.item}>
         <JrnlListText text={text}/>
         <JrnlListCount count={count}/>
@@ -69,20 +71,21 @@ function JrnlListItem({item, onPress}){
 }
 
 
-function JrnlList({data, onPressItem }){
+function JrnlList({data, onPressItem, onLongPressItem }){
   return (
     <View style={styles.list}>
       <FlatList
         data={data}
         keyExtractor={ item => item.id }
-        renderItem={ ({item, index}) => <JrnlListItem item={item} onPress={onPressItem}/>}/>
+        renderItem={ ({item, index}) => <JrnlListItem item={item} onPress={onPressItem} onLongPress={onLongPressItem}/>}/>
     </View>
   )
 }
 
 JrnlList.propTypes = {
   data: PropTypes.array.isRequired,
-  onPressItem: PropTypes.func.isRequired
+  onPressItem: PropTypes.func.isRequired,
+  onLongPressItem: PropTypes.func.isRequired
 }
 
 
@@ -91,7 +94,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onPressItem: () => dispatch(startEntry())
+  onPressItem: () => dispatch(startEntry()),
+  onLongPressItem: () => dispatch(NavigationActions.navigate({routeName: 'EditJrnl'}))
 })
 
 

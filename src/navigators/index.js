@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import HomeScreen from '../screens/HomeScreen'
 import NewJrnlScreen from '../screens/NewJrnlScreen'
-import NewEntryScreen from '../screens/NewEntryScreen'
+import EditJrnlScreen from '../screens/EditJrnlScreen'
 import { StackNavigator, addNavigationHelpers } from 'react-navigation'
 import { connect } from 'react-redux'
 
@@ -20,6 +20,9 @@ const stackConfig = {
   },
   NewJrnl: {
     screen: NewJrnlScreen
+  },
+  EditJrnl: {
+    screen: EditJrnlScreen
   }
 }
 

@@ -1,5 +1,5 @@
 /*
-Root component rendered by NewJrnlScreen
+Root component rendered by EditJrnlScreen
 */
 import React, { Component } from 'react'
 import { View, Text, TextInput, StyleSheet } from 'react-native'
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   }
 })
 
-export default function NewJrnl(){
+export default function EditJrnl(){
   return (
     <View style={styles.container}>
       <Label name="Name"/>
@@ -31,5 +31,4 @@ export default function NewJrnl(){
       <TextInput style={styles.input} keyboardType='numeric'/>
     </View>
   )
-
 }
