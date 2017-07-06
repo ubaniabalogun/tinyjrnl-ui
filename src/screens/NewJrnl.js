@@ -1,9 +1,10 @@
 /*
-Root component rendered by EditJrnlScreen
+Root component rendered by NewJrnlScreen
 */
 import React, { Component } from 'react'
-import { View, Text, TextInput, StyleSheet } from 'react-native'
-import { Label } from './Label'
+import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
+import { Label } from '../components/Label'
+import buildScreen from './factory'
 
 const styles = StyleSheet.create({
   container: {
@@ -20,7 +21,14 @@ const styles = StyleSheet.create({
   }
 })
 
-export default function EditJrnl(){
+function SaveButton({navigation}){
+  const onPress = () => navigation.goBack()
+  return (
+    <Button title='Save' onPress={ onPress }/>
+  )
+}
+
+function Screen(){
   return (
     <View style={styles.container}>
       <Label name="Name"/>
@@ -31,4 +39,7 @@ export default function EditJrnl(){
       <TextInput style={styles.input} keyboardType='numeric'/>
     </View>
   )
+
 }
+
+export default buildScreen({title: 'Create New Jrnl', RootComponent: Screen, HeaderRight: SaveButton })

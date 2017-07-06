@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text, FlatList, NavigationActions } from 'react-native'
+import { View, StyleSheet, Text, Button } from 'react-native'
 import NewJrnlButton from '../components/NewJrnlButton'
 import JrnlList from '../components/JrnlList'
 import NewEntry from '../components/NewEntry'
+import buildScreen from './factory'
 
 const styles = StyleSheet.create({
   container: {
@@ -16,20 +17,15 @@ const styles = StyleSheet.create({
   }
 })
 
-
-export default class HomeScreen extends Component {
-  static navigationOptions = {
-    title: 'My Jrnls',
-
-  }
-
-  render(){
-    return (
-      <View style={styles.container}>
-        <NewJrnlButton/>
-        <JrnlList/>
-        <NewEntry/>
-      </View>
-    )
-  }
+function Screen(){
+  return (
+    <View style={styles.container}>
+      <NewJrnlButton/>
+      <JrnlList/>
+      <NewEntry/>
+    </View>
+  )
 }
+
+
+export default buildScreen({title: 'My Jrnls', RootComponent: Screen })
