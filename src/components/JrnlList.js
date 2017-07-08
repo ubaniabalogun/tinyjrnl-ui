@@ -50,19 +50,19 @@ export function JrnlListCount({count}){
   )
 }
 
-function JrnlListText({text}){
+function JrnlListText({title}){
   return (
-    <Text style={styles.text}>{text}</Text>
+    <Text style={styles.text}>{title}</Text>
   )
 }
 
 
 function JrnlListItem({item, onPress, onLongPress}){
-  let {text, count } = item
+  let { title, count } = item
   return (
     <TouchableHighlight onPress={onPress} onLongPress={onLongPress} >
       <View style={styles.item}>
-        <JrnlListText text={text}/>
+        <JrnlListText title={title}/>
         <JrnlListCount count={count}/>
       </View>
     </TouchableHighlight>
@@ -77,7 +77,7 @@ function JrnlList({data, onPressItem, onLongPressItem }){
       <FlatList
         data={data}
         keyExtractor={ item => item.id }
-        renderItem={ ({item, index}) => <JrnlListItem item={item} onPress={onPressItem} onLongPress={onLongPressItem}/>}/>
+        renderItem={ ({ item, index }) => <JrnlListItem item={item} onPress={() => onPressItem(item)} onLongPress={onLongPressItem}/>}/>
     </View>
   )
 }
@@ -94,7 +94,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onPressItem: () => dispatch(startEntry()),
+  onPressItem: (item) => dispatch(startEntry(item)),
   onLongPressItem: () => dispatch(NavigationActions.navigate({routeName: 'EditJrnl'}))
 })
 

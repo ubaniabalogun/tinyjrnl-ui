@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   }
 })
 
-function NewEntry({title,increment, isVisible, onCancel}){
+function NewEntry({ title, defaultIncrement , isVisible, onCancel }){
   return (
     <ModalWrapper
       style={styles.modal}
@@ -56,21 +56,21 @@ function NewEntry({title,increment, isVisible, onCancel}){
       >
       <View style={styles.modalContent}>
         <View style={styles.modalHeader}>
-          <Button title="Cancel" onPress={onCancel}/>
-          <Text style={styles.text}>Bottles of Water</Text>
-          <Button title="Save" onPress={onCancel}/>
+          <Button title="Cancel" onPress={ onCancel }/>
+          <Text style={styles.text}>{ title }</Text>
+          <Button title="Save" onPress={ onCancel }/>
         </View>
-        <TextInput style={styles.input}>{increment}</TextInput>
-        <TextInput style={styles.input} >{increment}</TextInput>
-
-
+        <TextInput style={styles.input}>{ defaultIncrement }</TextInput>
+        <TextInput style={styles.input} ></TextInput>
       </View>
     </ModalWrapper>
   )
 }
 
 const mapStateToProps = state => ({
-  isVisible: state.entryModal.isVisible
+  isVisible: state.entryModal.isVisible,
+  title: state.entryModal.title,
+  defaultIncrement: state.entryModal.defaultIncrement
 })
 
 const mapDispatchToProps = dispatch => ({

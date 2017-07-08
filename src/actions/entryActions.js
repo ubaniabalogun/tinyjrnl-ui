@@ -1,8 +1,9 @@
 import * as types from './actionTypes'
 
-export function startEntry(){
+export function startEntry(item){
   return {
-    type: types.START_NEW_ENTRY
+    type: types.START_NEW_ENTRY,
+    ...item
   }
 }
 
